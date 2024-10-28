@@ -1,3 +1,4 @@
+// Stupid
 unlayer.registerTool({
   name: 'tab_tool',
   label: 'Tabs',
