@@ -1,5 +1,3 @@
-const React = window.unlayer.React;
-
 const Viewer = unlayer.createViewer({
   render(values) {
     return "<div>I am a custom tool.</div>"
