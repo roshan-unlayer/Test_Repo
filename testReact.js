@@ -1,7 +1,3 @@
-const Viewer = () => {
-  return <div>I am a custom tool.</div>;
-};
-
 unlayer.registerTool({
   name: 'my_tool',
   label: 'My Tool',
@@ -10,18 +6,25 @@ unlayer.registerTool({
   options: {},
   values: {},
   renderer: {
-    Viewer: Viewer, // our React Viewer
+    Viewer: unlayer.createViewer({
+      render(values) {
+        return "<div>I am a custom tool.</div>"
+      }
+    }),
     exporters: {
-      web: function (values) {
-        return '<div>I am a custom tool.</div>';
+      web: function(values) {
+        return "<div>I am a custom tool.</div>"
       },
-      email: function (values) {
-        return '<div>I am a custom tool.</div>';
-      },
+      email: function(values) {
+        return "<div>I am a custom tool.</div>"
+      }
     },
     head: {
-      css: function (values) {},
-      js: function (values) {},
-    },
+      css: function(values) {},
+      js: function(values) {}
+    }
+  },
+  validator(data) {
+    return [];
   },
 });
