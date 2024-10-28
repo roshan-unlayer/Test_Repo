@@ -1,6 +1,3 @@
-const React = window.unlayer.React
-const unlayer = window.unlayer
-
 const Viewer = () => {
   return <div>I am a custom tool.</div>
 }
