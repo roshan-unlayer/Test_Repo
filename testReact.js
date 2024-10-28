@@ -1,3 +1,4 @@
+// Thing
 unlayer.registerTool({
   name: 'my_tool',
   label: 'My Tool',
