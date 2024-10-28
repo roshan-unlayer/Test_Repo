@@ -2,7 +2,7 @@ const Viewer = () => {
   return <div>I am a custom tool.</div>
 }
 console.log('TOOL')
-
+// Update
 unlayer.registerTool({
   name: 'my_tool',
   label: 'My Tool',
