@@ -1,25 +1,3 @@
-var emptyTemplate = _.template(`
-<div style="padding: 15px; border: 2px dashed #CCC; background-color: #EEE; color: #999; text-align: center;">
-    No Tabs
-</div>
-`);
-
-var tabTemplate = _.template(`
-  <div>
-    <div class="tab">
-      <% _.forEach(items, function(item,index) { %>
-        <button class="tablinks <%= index === 0 ? 'active' : '' %>" onclick="openTab(this,<%= index %>)"><%= item.title %></button>
-      <% }); %>
-    </div>
-
-    <% _.forEach(items, function(item,index) { %>
-      <div id="<%= index %>" class="tabcontent" style=<%= index === 0 ? 'display:block!important;' : 'display:none!important;' %>
-        <p><%= item.content %></p>
-      </div>
-    <% }); %>
-  </div>
-`);
-
 unlayer.registerTool({
   name: 'tab_tool',
   label: 'Tabs',
