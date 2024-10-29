@@ -64,6 +64,11 @@ const modalTemplate = function (data) {
 // `);
 
 const productItemsTemplate = (data) => {
+  if (!data || !Array.isArray(data.products)) {
+    console.error("No products data available.");
+    return ''; // Return an empty string or some fallback content
+  }
+
   return data.products
     .map(
       (item) => `
