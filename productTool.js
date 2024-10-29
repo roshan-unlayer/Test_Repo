@@ -276,6 +276,18 @@ unlayer.registerTool({
   },
 });
 
+const editorTemplate = `<button id="addProduct" class="button">Add Product</button>`;
+
+const showModal = function () {
+  const modal = document.getElementById('product_library_modal');
+  modal.classList.add('show');
+};
+
+const hideModal = function () {
+  const modal = document.getElementById('product_library_modal');
+  modal.classList.remove('show');
+};
+
 unlayer.registerPropertyEditor({
   name: 'product_library',
   layout: 'bottom',
