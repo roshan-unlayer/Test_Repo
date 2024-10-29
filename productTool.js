@@ -276,3 +276,72 @@ unlayer.registerTool({
   },
 });
 
+unlayer.registerPropertyEditor({
+  name: 'product_library',
+  layout: 'bottom',
+  Widget: unlayer.createWidget({
+    render(value, updateValue, data) {
+      return editorTemplate;
+    },
+    mount(node, value, updateValue, data) {
+      var addButton = node.querySelector('#addProduct');
+      addButton.onclick = function () {
+        showModal();
+        setTimeout(() => {
+          // We are using event bubling to capture clicked item instead of registering click event on all product items.
+          var selectButton = document.querySelector('.products-list');
+          if (!selectButton) return;
+          selectButton.onclick = function (e) {
+            if (e.target.id === 'product-item') {
+              // If user clicks on product item
+              // Find selected item from products list
+              const selectedProduct = data.products.find(
+                (item) => item.id === parseInt(e.target.dataset.uuid)
+              );
+              updateValue({ selected: selectedProduct });
+            } else {
+              // If user click on child of product item (e.g. title, price, image or desctiption)
+              const parent = e.target.parentElement;
+              if (parent && parent.id !== 'product-item') return;
+              const selectedProduct = data.products.find(
+                (item) => item.id === parseInt(parent.dataset.uuid)
+              );
+              updateValue({ selected: selectedProduct });
+            }
+            hideModal();
+            // This is a hack to close property editor right bar on selecting an item from products list.
+            var outerBody = document.querySelector('#u_body');
+            outerBody.click();
+          };
+          /* Register event listeners for search */
+          var searchBar = document.querySelector('#search-bar');
+          var searchButton = document.querySelector('#search-btn');
+          searchButton.onclick = function (e) {
+            const list = document.querySelector(
+              '#product_library_modal .products-list'
+            );
+            let filteredItem;
+            let productsListHtml;
+            if (list && data && data.products) {
+              if (searchBar.value === '') {
+                productsListHtml = productItemsTemplate({
+                  products: data.products,
+                });
+              } else {
+                filteredItem = data.products.filter((item) =>
+                  item.title
+                    .toLowerCase()
+                    .includes(searchBar.value.toLowerCase())
+                );
+                productsListHtml = productItemsTemplate({
+                  products: filteredItem,
+                });
+              }
+              list.innerHTML = productsListHtml;
+            }
+          };
+        }, 200);
+      };
+    },
+  }),
+});
