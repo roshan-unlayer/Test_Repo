@@ -1,5 +1,6 @@
 // New Tool
 // Yeah
+// work
 unlayer.registerTool({
   name: 'new_tool',
   label: 'New Tool',
