@@ -1,3 +1,4 @@
+// New Tool
 unlayer.registerTool({
   name: 'new_tool',
   label: 'New Tool',
