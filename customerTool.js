@@ -1,6 +1,6 @@
 unlayer.registerTool({
-  name: 'my_tool',
-  label: 'My Tool',
+  name: 'new_tool',
+  label: 'New Tool',
   icon: 'fa-smile',
   supportedDisplayModes: ['web', 'email'],
   options: {
