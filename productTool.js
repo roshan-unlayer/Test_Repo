@@ -53,36 +53,36 @@ const modalTemplate = function (data) {
 `;
 };
 
-// const productItemsTemplate = _.template(`
-// <% _.forEach(products, function(item) { %>
-//   <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.title %>" data-price="<%= item.price %>" data-image="<%= item.image %>" data-description="<%= item.description %>" >
-//   <img src="<%= item.image %>" style="max-height: 300px;min-height: 300px;width: 100%;" />
-//     <h4 style="margin: 0.5rem 0; text-align: left;"><%= item.title %></h4>
-//     <h4 style="margin: 0.5rem 0; text-align: left;">$<%= item.price %></h4>
-//     <p style="text-align: left;"><%= item.description %></p>
-//   </div>
-// <% }); %>
-// `);
+const productItemsTemplate = _.template(`
+<% _.forEach(products, function(item) { %>
+  <div class="product-item" id="product-item" data-uuid='<%= item.id %>' data-title="<%= item.title %>" data-price="<%= item.price %>" data-image="<%= item.image %>" data-description="<%= item.description %>" >
+  <img src="<%= item.image %>" style="max-height: 300px;min-height: 300px;width: 100%;" />
+    <h4 style="margin: 0.5rem 0; text-align: left;"><%= item.title %></h4>
+    <h4 style="margin: 0.5rem 0; text-align: left;">$<%= item.price %></h4>
+    <p style="text-align: left;"><%= item.description %></p>
+  </div>
+<% }); %>
+`);
 
-const productItemsTemplate = (data) => {
-  if (!data || !Array.isArray(data.products)) {
-    console.error("No products data available.");
-    return ''; // Return an empty string or some fallback content
-  }
+// const productItemsTemplate = (data) => {
+//   if (!data || !Array.isArray(data.products)) {
+//     console.error("No products data available.");
+//     return ''; // Return an empty string or some fallback content
+//   }
 
-  return data.products
-    .map(
-      (item) => `
-      <div class="product-item" id="product-item" data-uuid="${item.id}" data-title="${item.title}" data-price="${item.price}" data-image="${item.image}" data-description="${item.description}">
-        <img src="${item.image}" style="max-height: 300px;min-height: 300px;width: 100%;" />
-        <h4 style="margin: 0.5rem 0; text-align: left;">${item.title}</h4>
-        <h4 style="margin: 0.5rem 0; text-align: left;">$${item.price}</h4>
-        <p style="text-align: left;">${item.description}</p>
-      </div>
-      `
-    )
-    .join('');
-};
+//   return data.products
+//     .map(
+//       (item) => `
+//       <div class="product-item" id="product-item" data-uuid="${item.id}" data-title="${item.title}" data-price="${item.price}" data-image="${item.image}" data-description="${item.description}">
+//         <img src="${item.image}" style="max-height: 300px;min-height: 300px;width: 100%;" />
+//         <h4 style="margin: 0.5rem 0; text-align: left;">${item.title}</h4>
+//         <h4 style="margin: 0.5rem 0; text-align: left;">$${item.price}</h4>
+//         <p style="text-align: left;">${item.description}</p>
+//       </div>
+//       `
+//     )
+//     .join('');
+// };
 
 unlayer.registerTool({
   name: 'product_tool',
